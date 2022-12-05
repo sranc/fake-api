@@ -26,6 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [UserController::class, 'authenticate']);
 
+Route::get('images', [ImageController::class, 'index']);
+Route::get('images/{image}', [ImageController::class, 'show']);
+Route::get('images/{image}/imageRight', [ImageController::class, 'imageRight']);
+Route::post('images', [ImageController::class, 'store']);
+Route::put('images/{image}', [ImageController::class, 'update']);
+Route::delete('images/{image}', [ImageController::class, 'delete']);
+
 Route::group(['middleware' => ['jwt.verify']], function () {
  // Add new user
  Route::post('users', [UserController::class, 'register']);
